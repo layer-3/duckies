@@ -44,6 +44,6 @@
     "tsx": "3.12.7"
   },
   "dependencies": {
-    "mocha": "10.8.2"
+    "mocha": "11.0.1"
   }
 }
