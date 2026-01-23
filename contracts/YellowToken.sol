@@ -53,6 +53,16 @@ contract YellowToken is ERC20, AccessControl, IBlacklist {
 		TOKEN_SUPPLY_CAP = supplyCap;
 	}
 
+	/**
+	 * @dev Override `renounceRole` function to prevent renouncing BLACKLISTED_ROLE to forbid users from removing themselves from the blacklist.
+	 * @param role Role to renounce.
+	 * @param account Account to renounce role for.
+	 */
+	function renounceRole(bytes32 role, address account) public override {
+		require(role != BLACKLISTED_ROLE, 'Cannot renounce BLACKLISTED_ROLE');
+		super.renounceRole(role, account);
+	}
+
 	/// Token functions
 
 	/**
